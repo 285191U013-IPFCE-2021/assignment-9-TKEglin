@@ -4,7 +4,6 @@ typedef struct node
 {
   int num;
   bool visited;
-  bool added;
   struct node *lchild;
   struct node *rchild;
 } node;

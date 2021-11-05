@@ -5,9 +5,10 @@
 #include <stdio.h>		/* scanf, printf */
 #include <stdlib.h>		/* abort */
 #include <stdbool.h>	/* bool, true, false */
-#include <assert.h>
 #include "dfs.h"
 
+
+/* Note: Test cases do not work for some reason.*/
 
 void DFT (node *root){
     stack *topp = NULL; //Top of the stack
@@ -23,12 +24,12 @@ void DFT (node *root){
         topp = pop(topp);
 
 		//If the right child of the node exists, it is pushed to the stack
-        if(temp_node->rchild != NULL && !temp_node->rchild->visited) {
+        if(temp_node->rchild != NULL) {
             topp = push(topp, temp_node->rchild);
-            temp_node->rchild->visited = true;
+            temp_node->rchild->visited = true;      //The node has now been visited
         }
 		//Ditto for left child
-        if(temp_node->lchild != NULL && !temp_node->lchild->visited) {
+        if(temp_node->lchild != NULL) {
             topp = push(topp, temp_node->lchild);
             temp_node->lchild->visited = true;
         }
@@ -55,7 +56,7 @@ void print_node (node * p) {
     if (p == NULL)
         printf ("NULL\n");
     else
-        printf ("%d, ", p->num);
+        printf ("%d ", p->num);
 }
 
 
@@ -104,7 +105,7 @@ node *top (stack * topp) {
 // element from the stack 
 
 stack *pop (stack *topp) {
-    stack *temp;
+    stack *temp = topp;
 
     topp = topp->next;
 
