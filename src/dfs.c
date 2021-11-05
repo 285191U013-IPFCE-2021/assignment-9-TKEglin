@@ -74,9 +74,7 @@ void print_tree (node * p, int depth) {
 
 
     if (p->lchild)
-        {
         print_tree (p->lchild, depth + 1);
-        }
 
     if (p->rchild)
         print_tree (p->rchild, depth + 1);
@@ -106,17 +104,18 @@ node *top (stack * topp) {
 // element from the stack 
 
 stack *pop (stack *topp) {
+    stack *temp;
 
     topp = topp->next;
 
+    free(temp);
 	return topp;
 }
 
 void print_stack (stack * topp) {
     struct stack *temp = topp;
 
-    while (temp != NULL)
-        {
+    while (temp != NULL) {
 
         print_node (temp->node);
         printf ("\n");
